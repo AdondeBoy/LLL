@@ -12,11 +12,11 @@ GENVCHRH    EQU     15
 
 ; --- MAP CONSTANTS -----------------------------------------------------------
 
-*MAPSCRIX    EQU     1                       ; POSICIÓN X DE LA SCREEN INICIAL
-*MAPSCRIY    EQU     0                       ; POSICION Y DE LA SCREEN INICIAL
+MAPSCRIX    EQU     1                       ; POSICIÓN X DE LA SCREEN INICIAL
+MAPSCRIY    EQU     0                       ; POSICION Y DE LA SCREEN INICIAL
 
-MAPSCRIX    EQU     4
-MAPSCRIY    EQU     0                 
+*MAPSCRIX    EQU     4
+*MAPSCRIY    EQU     0                 
 
 MAPWIDTH    EQU     5                       ; NUMERO DE SCREENS HORIZONTALES
 MAPHEIGH    EQU     5                       ; NUMERO DE SCREENS VERTICALES
@@ -29,11 +29,11 @@ MAPTILEH    EQU     16                      ; TILE HEIGHT
 
 PYRWIDTH    EQU     30                      ; SPRITE WIDTH
 PYRHEIGH    EQU     42                      ; SPRITE HEIGHT
-*PYRXINI     EQU     20*MAPTILEW             ; PLAYER INITIAL X POSITION
-*PYRYINI     EQU     12*MAPTILEW-PYRHEIGH    ; PLAYER INITIAL Y POSITION
+PYRXINI     EQU     20*MAPTILEW             ; PLAYER INITIAL X POSITION
+PYRYINI     EQU     12*MAPTILEW-PYRHEIGH    ; PLAYER INITIAL Y POSITION
 
-PYRXINI     EQU     8*MAPTILEW
-PYRYINI     EQU     15*MAPTILEW-PYRHEIGH
+*PYRXINI     EQU     8*MAPTILEW
+*PYRYINI     EQU     15*MAPTILEW-PYRHEIGH
 
 PYRSPDX     EQU     15                      ; PLAYER RUNNING X SPEED
 PYRYSPD     EQU     15                      ; PLAYER FALLING Y SPEED

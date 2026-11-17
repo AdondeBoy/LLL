@@ -1,6 +1,6 @@
 0001766A Starting Address
 Assembler used: EASy68K Editor/Assembler v5.16.01
-Created On: 16/01/2023 19:41:21
+Created On: 17/11/2026 13:52:33
 
 00000000                             1  * =============================================================================
 00000000                             2  * TITLE       : LLL
@@ -270,8 +270,8 @@ Created On: 16/01/2023 19:41:21
 000011AA                           266  ; OUTPUT    :
 000011AA                           267  ; MODIFIES  :
 000011AA                           268  ; -----------------------------------------------------------------------------
-000011AA  33FC 0080 0001769A       269              MOVE.W  #PYRXINI,(PYRPOSX)      ; APLICAMOS POSICIÓN X INICIAL
-000011B2  33FC 00C6 0001769C       270              MOVE.W  #PYRYINI,(PYRPOSY)      ; APLICAMOS POSICIÓN Y INICIAL
+000011AA  33FC 0140 0001769A       269              MOVE.W  #PYRXINI,(PYRPOSX)      ; APLICAMOS POSICIÓN X INICIAL
+000011B2  33FC 0096 0001769C       270              MOVE.W  #PYRYINI,(PYRPOSY)      ; APLICAMOS POSICIÓN Y INICIAL
 000011BA  4239 0001769F            271              CLR.B   (PYRXSPD)               ; RESET X SPEED 
 000011C0  4239 0001769E            272              CLR.B   (PYRGRV)                ; RESET A LA GRAVEDAD
 000011C6  4239 00017699            273              CLR.B   (PYRFACE)               ; MIRANDO A LA DERECHA
@@ -279,8 +279,8 @@ Created On: 16/01/2023 19:41:21
 000011D2  4239 000176A3            275              CLR.B   (PYRCNT)                ; RESET COUNTER
 000011D8  13FC 0003 00017698       276              MOVE.B  #3,(PYRSPR)             ; MIRANDO A LA DERECHA CON GRAVEDAD
 000011E0  13FC 000F 0001769F       277              MOVE.B  #PYRSPDX,(PYRXSPD)
-000011E8  33FC 0080 000176A4       278              MOVE.W  #PYRXINI,(CHKPX)
-000011F0  33FC 00C6 000176A6       279              MOVE.W  #PYRYINI,(CHKPY)
+000011E8  33FC 0140 000176A4       278              MOVE.W  #PYRXINI,(CHKPX)
+000011F0  33FC 0096 000176A6       279              MOVE.W  #PYRYINI,(CHKPY)
 000011F8  4239 000176B0            280              CLR.B   (CHKPGRV)
 000011FE  4E75                     281              RTS
 00001200                           282  
@@ -1016,12 +1016,12 @@ Created On: 16/01/2023 19:41:21
 00001858                          1012  ; OUTPUT    :
 00001858                          1013  ; MODIFIES  :
 00001858                          1014  ; -----------------------------------------------------------------------------
-00001858  33FC 0004 00017690      1015              MOVE.W  #MAPSCRIX,(MAPPOSX)     ; SET X AND Y POSITIONS
+00001858  33FC 0001 00017690      1015              MOVE.W  #MAPSCRIX,(MAPPOSX)     ; SET X AND Y POSITIONS
 00001860  33FC 0000 00017692      1016              MOVE.W  #MAPSCRIY,(MAPPOSY)
 00001868  4EB9 000019D8           1017              JSR     MAPGTSCA                ; GET INIT MAP ADDRESS
 0000186E  4239 000176A1           1018              CLR.B   (PYRLIFE)
 00001874  4239 000176D7           1019              CLR.B   SCRCYCCT
-0000187A  33FC 0004 000176A8      1020              MOVE.W  #MAPSCRIX,(CHKMPPX)     ; SET SCREEN COORDINATES AS DEFAULT
+0000187A  33FC 0001 000176A8      1020              MOVE.W  #MAPSCRIX,(CHKMPPX)     ; SET SCREEN COORDINATES AS DEFAULT
 00001882  33FC 0000 000176AA      1021              MOVE.W  #MAPSCRIY,(CHKMPPY)
 0000188A  23F9 00017694 000176AC  1022              MOVE.L  (MAPSCRPT),(CHKPSC)
 00001894  4E75                    1023              RTS
@@ -1246,9 +1246,9 @@ Created On: 16/01/2023 19:41:21
 00001A46                          1242  
 00001A46                          1243  ; --- MAP CONSTANTS -----------------------------------------------------------
 00001A46                          1244  
-00001A46                          1245  
-00001A46  =00000004               1246  MAPSCRIX    EQU     4
-00001A46  =00000000               1247  MAPSCRIY    EQU     0                 
+00001A46  =00000001               1245  MAPSCRIX    EQU     1                       ; POSICIÓN X DE LA SCREEN INICIAL
+00001A46  =00000000               1246  MAPSCRIY    EQU     0                       ; POSICION Y DE LA SCREEN INICIAL
+00001A46                          1247  
 00001A46                          1248  
 00001A46  =00000005               1249  MAPWIDTH    EQU     5                       ; NUMERO DE SCREENS HORIZONTALES
 00001A46  =00000005               1250  MAPHEIGH    EQU     5                       ; NUMERO DE SCREENS VERTICALES
@@ -1261,9 +1261,9 @@ Created On: 16/01/2023 19:41:21
 00001A46                          1257  
 00001A46  =0000001E               1258  PYRWIDTH    EQU     30                      ; SPRITE WIDTH
 00001A46  =0000002A               1259  PYRHEIGH    EQU     42                      ; SPRITE HEIGHT
-00001A46                          1260  
-00001A46  =00000080               1261  PYRXINI     EQU     8*MAPTILEW
-00001A46  =000000C6               1262  PYRYINI     EQU     15*MAPTILEW-PYRHEIGH
+00001A46  =00000140               1260  PYRXINI     EQU     20*MAPTILEW             ; PLAYER INITIAL X POSITION
+00001A46  =00000096               1261  PYRYINI     EQU     12*MAPTILEW-PYRHEIGH    ; PLAYER INITIAL Y POSITION
+00001A46                          1262  
 00001A46                          1263  
 00001A46  =0000000F               1264  PYRSPDX     EQU     15                      ; PLAYER RUNNING X SPEED
 00001A46  =0000000F               1265  PYRYSPD     EQU     15                      ; PLAYER FALLING Y SPEED
@@ -6493,7 +6493,7 @@ MAPPLOT:YLOOP       1950
 MAPPOSX             17690
 MAPPOSY             17692
 MAPSCRH             1E
-MAPSCRIX            4
+MAPSCRIX            1
 MAPSCRIY            0
 MAPSCRPT            17694
 MAPSCRW             28
@@ -6583,9 +6583,9 @@ PYRUPD:FALLGRV      1290
 PYRUPD:GRAV         1262
 PYRUPD:NOGRAV       1228
 PYRWIDTH            1E
-PYRXINI             80
+PYRXINI             140
 PYRXSPD             1769F
-PYRYINI             C6
+PYRYINI             96
 PYRYSPD             F
 SAVEBUFFER          176A4
 SCRCYCCT            176D7
